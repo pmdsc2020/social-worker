@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello Speaking — Say Hello in Many Languages</title>
+  <meta name="description" content="Hear and see 'Hello' spoken aloud in dozens of languages using your browser's speech synthesis." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1><span aria-hidden="true">👋</span> Hello Speaking</h1>
+      <p class="tagline">Say hello out loud — in dozens of languages.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls" aria-label="Controls">
+      <div class="search-wrap">
+        <label for="search" class="visually-hidden">Search languages</label>
+        <input
+          id="search"
+          type="search"
+          placeholder="Search a language… (e.g. Japanese, Hindi, 日本語)"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="control-row">
+        <button id="speak-all" class="btn btn-primary" type="button">▶ Speak all</button>
+        <button id="stop-all" class="btn btn-ghost" type="button">■ Stop</button>
+
+        <div class="slider-group">
+          <label for="rate">Rate <span id="rate-val">1.0</span></label>
+          <input id="rate" type="range" min="0.5" max="1.5" step="0.1" value="1" />
+        </div>
+
+        <div class="slider-group">
+          <label for="pitch">Pitch <span id="pitch-val">1.0</span></label>
+          <input id="pitch" type="range" min="0.5" max="1.5" step="0.1" value="1" />
+        </div>
+      </div>
+
+      <p id="support-warning" class="warning" hidden>
+        Your browser doesn't support speech synthesis. You can still read the greetings below,
+        but audio playback won't work. Try a recent version of Chrome, Edge, or Safari.
+      </p>
+    </section>
+
+    <p id="result-count" class="result-count" aria-live="polite"></p>
+
+    <section id="grid" class="grid" aria-label="Languages"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Built with the Web Speech API. Voice availability and accent depend on your browser and
+      operating system.
+    </p>
+  </footer>
+
+  <script src="data/languages.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

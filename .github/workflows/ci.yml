@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.js
+          node --check data/languages.js
+
+      - name: Validate language data
+        run: |
+          node -e "
+            const LANGUAGES = require('./data/languages.js');
+            const codes = new Set();
+            for (const l of LANGUAGES) {
+              if (!l.code || !l.name || !l.native || !l.greeting || !l.flag) {
+                console.error('Missing field in entry:', l);
+                process.exit(1);
+              }
+              if (codes.has(l.code)) {
+                console.error('Duplicate language code:', l.code);
+                process.exit(1);
+              }
+              codes.add(l.code);
+            }
+            console.log(\`Validated \${LANGUAGES.length} languages, no duplicates.\`);
+          "
