@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ruos": {
+      "type": "http",
+      "url": "https://ruos.cognitum.one/mcp"
+    }
+  }
+}
