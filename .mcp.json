@@ -3,6 +3,10 @@
     "ruos": {
       "type": "http",
       "url": "https://ruos.cognitum.one/mcp"
+    },
+    "cartesia": {
+      "type": "http",
+      "url": "https://mcp.cartesia.ai/mcp"
     }
   }
 }
